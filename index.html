@@ -171,6 +171,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .status-dot {
@@ -1669,12 +1671,12 @@
     <div class="wrap trade-bar-inner">
       <div class="trade-ticker">
         <span class="badge">Export Status</span>
-        <span>🚢 Air & Sea Shipments Active: UAE 🇦🇪 • Saudi Arabia 🇸🇦 • Qatar 🇶🇦 • Bahrain 🇧🇭 • Oman 🇴🇲 • Kuwait 🇰🇼 • Vietnam 🇻🇳 • Malaysia 🇲🇾</span>
+        <span>🚢 Air & Sea Shipments Active: UAE • Saudi Arabia • Qatar • Bahrain • Oman • Kuwait • Vietnam • Malaysia</span>
       </div>
       <div class="trade-desks">
-        <span><i class="status-dot"></i> Dubai Desk: Online</span>
-        <span><i class="status-dot"></i> Riyadh Desk: Online</span>
-        <span><i class="status-dot"></i> Head Office Karachi: Online</span>
+        <span><i class="status-dot"></i> Dubai: Online</span>
+        <span><i class="status-dot"></i> Riyadh: Online</span>
+        <span><i class="status-dot"></i> Karachi HO: Online</span>
       </div>
     </div>
   </div>
@@ -1717,7 +1719,7 @@
           </div>
           <h1 data-aos="fade-up" data-aos-delay="100">Global Exporter of Premium Halal Fresh & Frozen Meat</h1>
           <p class="lead" data-aos="fade-up" data-aos-delay="200">
-            Exporting world-class Halal Beef, Mutton, Veal, and Offal cuts with state-of-the-art slaughtering facilities, certified -18°C reefer cold-chain, and seamless air/sea freight logistics across GCC, Middle East & Asia.
+            Halal Beef, Mutton, Veal & Offal, exported via certified -18°C cold-chain across GCC, Middle East & Asia.
           </p>
           <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
             <button class="btn-primary" onclick="scrollToSec('sec-rfq')">
@@ -1839,7 +1841,7 @@
                 <span class="cut-temp-badge">Chilled / Frozen</span>
               </div>
               <h3>Compensated Beef Carcass</h3>
-              <p class="desc">Whole carcass split in 4 quarters (2 forequarters, 2 hindquarters) from young grass-fed bulls.</p>
+              <p class="desc">4-quarter split, grass-fed bulls.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Format:</span> <strong>Bone-in Carcass (4-Way)</strong></div>
                 <div class="spec-item"><span>Packaging:</span> <strong>White Hygienic Stockinette</strong></div>
@@ -1858,7 +1860,7 @@
                 <span class="cut-temp-badge">Vacuum Packed</span>
               </div>
               <h3>Boneless Beef Primals (Topside / Silver)</h3>
-              <p class="desc">Premium defatted boneless cuts including Topside, Silverside, Knuckle, Tenderloin, and Striploin.</p>
+              <p class="desc">Premium defatted boneless primals.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Format:</span> <strong>100% Boneless IWP</strong></div>
                 <div class="spec-item"><span>Packaging:</span> <strong>High-Barrier Vacuum Bag (20kg CTN)</strong></div>
@@ -1877,7 +1879,7 @@
                 <span class="cut-temp-badge">Air-Flown Fresh</span>
               </div>
               <h3>Fresh Chilled Whole Mutton Carcass</h3>
-              <p class="desc">Whole young sheep and goat carcasses, hand-slaughtered, thoroughly bled, and temperature conditioned.</p>
+              <p class="desc">Hand-slaughtered whole sheep &amp; goat carcasses.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Format:</span> <strong>Whole Carcass with Offal</strong></div>
                 <div class="spec-item"><span>Packaging:</span> <strong>Double Stockinette & Poly Liner</strong></div>
@@ -1896,7 +1898,7 @@
                 <span class="cut-temp-badge">6-Way Cut</span>
               </div>
               <h3>6-Way Cut Mutton (Legs, Chops, Shoulder)</h3>
-              <p class="desc">Precision-portioned 6-way bone-in cuts packed for wholesale butcheries, hypermarkets, and food service.</p>
+              <p class="desc">6-way bone-in cuts, wholesale ready.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Format:</span> <strong>6-Piece Primal Breakdown</strong></div>
                 <div class="spec-item"><span>Packaging:</span> <strong>IWP in Corrugated Master Carton</strong></div>
@@ -1915,7 +1917,7 @@
                 <span class="cut-temp-badge">Tender Cut</span>
               </div>
               <h3>Boneless Bobby Veal Cuts</h3>
-              <p class="desc">Ultra-tender, pale pink veal sourced from young milk/grass-fed calves. Low fat and exceptionally tender.</p>
+              <p class="desc">Ultra-tender, pale pink milk-fed veal.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Format:</span> <strong>Boneless Legs, Loin, Shoulders</strong></div>
                 <div class="spec-item"><span>Packaging:</span> <strong>Thermoformed Vacuum Pack</strong></div>
@@ -1934,7 +1936,7 @@
                 <span class="cut-temp-badge">Frozen Bulk</span>
               </div>
               <h3>Beef & Mutton Offal (Liver, Tripe, Omasum)</h3>
-              <p class="desc">Hygienically cleaned and processed edible offals including Beef Omasum, Tripe, Liver, Heart, and Kidneys.</p>
+              <p class="desc">Hygienically cleaned edible offals.</p>
               <div class="cut-specs">
                 <div class="spec-item"><span>Selection:</span> <strong>Salted/Dried Omasum, Liver, Tripe, Brain</strong></div>
                 <div class="spec-item"><span>Processing:</span> <strong>Machine Cleaned & Blast Frozen</strong></div>
@@ -2503,14 +2505,18 @@
 
   <!-- ================= JAVASCRIPT ================= -->
   <script>
+    function setActiveNav(pageId) {
+      document.querySelectorAll('.nav-links button[data-page]').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-page') === pageId);
+      });
+    }
+
     function goPage(pageId) {
       document.querySelectorAll('.page').forEach(function (p) {
         p.classList.remove('active');
         p.style.display = 'none';
       });
-      document.querySelectorAll('.nav-links button').forEach(function (btn) {
-        btn.classList.toggle('active', btn.getAttribute('data-page') === pageId);
-      });
+      setActiveNav(pageId);
       var target = document.getElementById('page-' + pageId);
       if (target) {
         target.style.display = 'block';
@@ -2523,10 +2529,14 @@
       if (window.AOS) setTimeout(function () { AOS.refresh(); }, 100);
     }
 
+    var SEC_TO_PAGE = { 'sec-products': 'products', 'sec-logistics': 'logistics' };
+
     function scrollToSec(secId) {
+      if (SEC_TO_PAGE[secId]) setActiveNav(SEC_TO_PAGE[secId]);
       if (!document.getElementById('page-home').classList.contains('active')) {
         goPage('home');
         setTimeout(function () {
+          if (SEC_TO_PAGE[secId]) setActiveNav(SEC_TO_PAGE[secId]);
           var el = document.getElementById(secId);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 200);
@@ -2629,11 +2639,28 @@
       }
 
       var navEl = document.querySelector('.nav');
+      var homePageEl = document.getElementById('page-home');
+      var spySections = [
+        { id: 'sec-products', page: 'products' },
+        { id: 'sec-logistics', page: 'logistics' }
+      ];
+      function updateScrollSpy() {
+        if (!homePageEl || !homePageEl.classList.contains('active')) return;
+        var scrollPos = window.scrollY + 160;
+        var current = 'home';
+        spySections.forEach(function (s) {
+          var el = document.getElementById(s.id);
+          if (el && el.offsetTop <= scrollPos) current = s.page;
+        });
+        setActiveNav(current);
+      }
       if (navEl) {
         window.addEventListener('scroll', function () {
           navEl.classList.toggle('scrolled', window.scrollY > 20);
+          updateScrollSpy();
         }, { passive: true });
       }
+      updateScrollSpy();
 
       var counted = false;
       var statSection = document.querySelector('.stat-cards-grid');
